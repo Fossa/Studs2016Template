@@ -11,7 +11,7 @@ att presentera information med appen. Endast att vidröra skärmen för att mata
 Appen får byggas med med enda begränsningen att kodbibliotek och API:er som i sin helhet
 utgör en lösning inte får användas. Vid tveksamheter, prata med någon från Dewire.
 
-En lista på sensorer finns nedan:
+En lista på sensorer finns här:
 http://developer.android.com/guide/topics/sensors/sensors_overview.html
 
 ## Kodskelettet
