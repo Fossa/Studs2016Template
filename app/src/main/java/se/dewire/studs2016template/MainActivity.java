@@ -28,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private Button[] buttons;
     ISensor sensor;
 
+    TextView tv;
     private int col, row;
     int ix;
+    boolean connected = false;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Button b_ = (Button) findViewById(R.id.b_);
 
 
-        final TextView tv = (TextView) findViewById(R.id.textView);
+        tv = (TextView) findViewById(R.id.textView);
 
         buttons = new Button[]{ba, bb, bc, bd, be, bf, bg, bh, bi, bj, bk, bl, bm, bn, bo, bp, bq, br, bs, bt, bu, bv, bw, bx, by, bz, bå, bä, bö, b_};
 
@@ -80,10 +82,14 @@ public class MainActivity extends AppCompatActivity {
         s = new DewireContestConnection(GROUP_TAG) {
             @Override
             public void onConnectionClosed() {
+                connected = false;
+                System.out.println("Not Connected!");
             }
 
             @Override
             public void onConnectionOpened() {
+                connected = true;
+                System.out.println("Connected!");
             }
 
         };
@@ -95,41 +101,44 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void event(Event e) {
                 System.out.println("Event catched "+e.name());
-                ix = row * COLUMNS + col;
-                buttons[ix].setBackgroundColor(Color.WHITE);
-                switch (e) {
-                    case UP:
-                        row = (row - 1 + ROWS) % ROWS;
-                        break;
-                    case DOWN:
-                        row = (row + 1) % ROWS;
-                        break;
-                    case LEFT:
-                        col = (col - 1 + COLUMNS) % COLUMNS;
-                        break;
-                    case RIGHT:
-                        col = (col + 1) % COLUMNS;
-                        break;
-                }
-                ix = row * COLUMNS + col;
-                buttons[ix].setBackgroundColor(Color.BLUE);
-                String newText;
-                switch (e) {
-                    case SELECT:
-                        buttons[ix].setBackgroundColor(Color.YELLOW);
-                        newText = tv.getText().toString() + buttons[ix].getText();
-                        tv.setText(newText);
-                        s.sendMessage(newText);
-                        break;
-                    case ERASE:
-                        buttons[ix].setBackgroundColor(Color.RED);
-                        String old = tv.getText().toString();
-                        if (old.length() > 0) {
-                            newText = old.substring(0, old.length() - 1);
+                if(connected) {
+                    ix = row * COLUMNS + col;
+                    buttons[ix].setBackgroundColor(Color.WHITE);
+                    switch (e) {
+                        case UP:
+                            row = (row - 1 + ROWS) % ROWS;
+                            break;
+                        case DOWN:
+                            row = (row + 1) % ROWS;
+                            break;
+                        case LEFT:
+                            col = (col - 1 + COLUMNS) % COLUMNS;
+                            break;
+                        case RIGHT:
+                            col = (col + 1) % COLUMNS;
+                            break;
+                    }
+                    ix = row * COLUMNS + col;
+                    buttons[ix].setBackgroundColor(Color.BLUE);
+                    String newText;
+                    switch (e) {
+                        case SELECT:
+                            buttons[ix].setBackgroundColor(Color.YELLOW);
+                            newText = tv.getText().toString() + buttons[ix].getText();
                             tv.setText(newText);
                             s.sendMessage(newText);
-                        }
-                        break;
+                            break;
+                        case ERASE:
+                            buttons[ix].setBackgroundColor(Color.RED);
+                            String old = tv.getText().toString();
+                            if (old.length() > 0) {
+                                newText = old.substring(0, old.length() - 1);
+
+                                tv.setText(newText);
+                                s.sendMessage(newText);
+                            }
+                            break;
+                    }
                 }
             }
         };
@@ -207,21 +216,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        int keyCode = event.getKeyCode();
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_VOLUME_UP:
-                System.out.println("Vol_up");
-                buttons[ix].setBackgroundColor(Color.YELLOW);
-                tv.setText(tv.getText().toString() + buttons[ix].getText());
+        if(connected) {
+            int keyCode = event.getKeyCode();
+            String newText;
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_VOLUME_UP:
+                    System.out.println("Vol_up");
+                    buttons[ix].setBackgroundColor(Color.YELLOW);
+                    newText = tv.getText().toString() + buttons[ix].getText();
+                    tv.setText(newText);
+                    s.sendMessage(newText);
+                    return true;
 
-            case KeyEvent.KEYCODE_VOLUME_DOWN:
-                System.out.println("Vol_up");
-                buttons[ix].setBackgroundColor(Color.RED);
-                String old = tv.getText().toString();
-                tv.setText(old.substring(0, old.length() - 1));
-                return true;
-            default:
-                return super.dispatchKeyEvent(event);
+                case KeyEvent.KEYCODE_VOLUME_DOWN:
+                    System.out.println("Vol_up");
+                    buttons[ix].setBackgroundColor(Color.RED);
+                    String old = tv.getText().toString();
+                    if (old.length() > 0) {
+                        newText = old.substring(0, old.length() - 1);
+                        tv.setText(newText);
+                        s.sendMessage(newText);
+                    }
+                    return true;
+                default:
+                    return super.dispatchKeyEvent(event);
+            }
         }
+        return true;
     }
 }

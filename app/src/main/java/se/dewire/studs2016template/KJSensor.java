@@ -51,7 +51,7 @@ public class KJSensor implements ISensor, SensorEventListener{
             //System.out.println("accelationSquareRoot is:- "
             //        + accelationSquareRoot);
             long actualTime = System.currentTimeMillis();
-            System.out.println("Sensor Event x:"+x+" y:"+y+" z:"+z);
+            //System.out.println("Sensor Event x:"+x+" y:"+y+" z:"+z);
             if (x >= ACC_THRESHOLD && y > -ACC_THRESHOLD && y < ACC_THRESHOLD){ // Left shake
                 notify(Observer.Event.LEFT);
                 System.out.println("LEFT");
