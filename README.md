@@ -1,6 +1,6 @@
 # Kodskelett för Studs2016/Dewire-event
 Github-repository för Kodskelett och instruktioner för uppgiften i 
-Studs2016-eventet hos Dewire Consultants AB.
+Hackathon.
 
 ## Uppgiften
 Uppgiften går ut på att bygga en Androidapp som kan användas som ett slags tangentbord
@@ -21,4 +21,4 @@ Kodskelettet får modifieras fritt, med undantag för filen DewireContestConnect
 Här finns instruktioner för hur man aktiverar utvecklaralternativ på androidenheter:
 http://www.greenbot.com/article/2457986/how-to-enable-developer-options-on-your-android-phone-or-tablet.html
 
-Vid problem, prata med någon från Dewire.
+Vid problem, prata med någon hackathondomare (Niklas eller Johan).
