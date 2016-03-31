@@ -7,7 +7,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DewireContestConnection s = null;
 
-    private static String GROUP_TAG = "Grp123";     //Change this to your group name
+    private static String GROUP_TAG = "Grupp2";     //Change this to your group name
 
 
     @Override
