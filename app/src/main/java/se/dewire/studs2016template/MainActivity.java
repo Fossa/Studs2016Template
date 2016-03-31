@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,6 +17,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import android.os.Handler;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
     private static String GROUP_TAG = "Grupp2";     //Change this to your group name
 
     private Button[] buttons;
+    ISensor sensor;
 
     private int col, row;
+    int ix;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -67,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         Button bö = (Button) findViewById(R.id.bö);
         Button b_ = (Button) findViewById(R.id.b_);
 
+
         final TextView tv = (TextView) findViewById(R.id.textView);
 
         buttons = new Button[]{ba, bb, bc, bd, be, bf, bg, bh, bi, bj, bk, bl, bm, bn, bo, bp, bq, br, bs, bt, bu, bv, bw, bx, by, bz, bå, bä, bö, b_};
@@ -74,26 +79,23 @@ public class MainActivity extends AppCompatActivity {
         bå.setBackgroundColor(Color.BLUE);
         s = new DewireContestConnection(GROUP_TAG) {
             @Override
-            public void onConnectionOpened() {
-                //Here you put code that will happen when the connection opens
-
-                updateString("Text i have written");
+            public void onConnectionClosed() {
             }
 
             @Override
-            public void onConnectionClosed() {
-                //Here you put code that will happen when the connection closes
+            public void onConnectionOpened() {
             }
-        };
 
-        new MySensor();
+        };
+        sensor = new KJSensor(this);
         final ISensor.Observer observer = new ISensor.Observer() {
             static final int COLUMNS = 5;
             static final int ROWS = 6;
 
             @Override
             public void event(Event e) {
-                int ix = row * COLUMNS + col;
+                System.out.println("Event catched "+e.name());
+                ix = row * COLUMNS + col;
                 buttons[ix].setBackgroundColor(Color.WHITE);
                 switch (e) {
                     case UP:
@@ -124,7 +126,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        final Handler handler = new Handler();
+        sensor.register(observer);
+        /*final Handler handler = new Handler();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -137,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         };
-        new Timer().scheduleAtFixedRate(task,1000,1000);
+        new Timer().scheduleAtFixedRate(task,1000,1000);*/
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -193,5 +196,25 @@ public class MainActivity extends AppCompatActivity {
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int keyCode = event.getKeyCode();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                System.out.println("Vol_up");
+                buttons[ix].setBackgroundColor(Color.YELLOW);
+                tv.setText(tv.getText().toString() + buttons[ix].getText());
+
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                System.out.println("Vol_up");
+                buttons[ix].setBackgroundColor(Color.RED);
+                String old = tv.getText().toString();
+                tv.setText(old.substring(0, old.length() - 1));
+                return true;
+            default:
+                return super.dispatchKeyEvent(event);
+        }
     }
 }
