@@ -21,7 +21,7 @@ import java.net.URISyntaxException;
 
 public abstract class DewireContestConnection {
 
-    private static String SERVER_ADDR = "gnode.se";
+    private static String SERVER_ADDR = "studs16.dewi.re";
     private static int PORT = 1337;
 
     public final String name;
