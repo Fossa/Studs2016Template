@@ -113,15 +113,22 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ix = row * COLUMNS + col;
                 buttons[ix].setBackgroundColor(Color.BLUE);
+                String newText;
                 switch (e) {
                     case SELECT:
                         buttons[ix].setBackgroundColor(Color.YELLOW);
-                        tv.setText(tv.getText().toString() + buttons[ix].getText());
+                        newText = tv.getText().toString() + buttons[ix].getText();
+                        tv.setText(newText);
+                        s.sendMessage(newText);
                         break;
                     case ERASE:
                         buttons[ix].setBackgroundColor(Color.RED);
                         String old = tv.getText().toString();
-                        tv.setText(old.substring(0, old.length()-1));
+                        if (old.length() > 0) {
+                            newText = old.substring(0, old.length() - 1);
+                            tv.setText(newText);
+                            s.sendMessage(newText);
+                        }
                         break;
                 }
             }

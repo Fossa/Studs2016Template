@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text=""
         android:id="@+id/textView" />
 
     <GridLayout
@@ -26,35 +26,35 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="A"
+            android:text="a"
             android:id="@+id/ba"
             android:layout_row="0"
             android:layout_column="0" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="B"
+            android:text="b"
             android:id="@+id/bb"
             android:layout_row="0"
             android:layout_column="1" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="C"
+            android:text="c"
             android:id="@+id/bc"
             android:layout_row="0"
             android:layout_column="2" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="D"
+            android:text="d"
             android:id="@+id/bd"
             android:layout_row="0"
             android:layout_column="3" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="E"
+            android:text="e"
             android:id="@+id/be"
             android:layout_row="0"
             android:layout_column="4" />
@@ -62,35 +62,35 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="F"
+            android:text="f"
             android:id="@+id/bf"
             android:layout_row="1"
             android:layout_column="0" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="G"
+            android:text="g"
             android:id="@+id/bg"
             android:layout_row="1"
             android:layout_column="1" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="H"
+            android:text="h"
             android:id="@+id/bh"
             android:layout_row="1"
             android:layout_column="2" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="I"
+            android:text="i"
             android:id="@+id/bi"
             android:layout_row="1"
             android:layout_column="3" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="J"
+            android:text="j"
             android:id="@+id/bj"
             android:layout_row="1"
             android:layout_column="4" />
@@ -98,35 +98,35 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="K"
+            android:text="k"
             android:id="@+id/bk"
             android:layout_row="2"
             android:layout_column="0" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="L"
+            android:text="l"
             android:id="@+id/bl"
             android:layout_row="2"
             android:layout_column="1" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="M"
+            android:text="m"
             android:id="@+id/bm"
             android:layout_row="2"
             android:layout_column="2" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="N"
+            android:text="n"
             android:id="@+id/bn"
             android:layout_row="2"
             android:layout_column="3" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="O"
+            android:text="o"
             android:id="@+id/bo"
             android:layout_row="2"
             android:layout_column="4" />
@@ -134,35 +134,35 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="P"
+            android:text="p"
             android:id="@+id/bp"
             android:layout_row="3"
             android:layout_column="0" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Q"
+            android:text="q"
             android:id="@+id/bq"
             android:layout_row="3"
             android:layout_column="1" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="R"
+            android:text="r"
             android:id="@+id/br"
             android:layout_row="3"
             android:layout_column="2" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="S"
+            android:text="s"
             android:id="@+id/bs"
             android:layout_row="3"
             android:layout_column="3" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="T"
+            android:text="t"
             android:id="@+id/bt"
             android:layout_row="3"
             android:layout_column="4" />
@@ -170,35 +170,35 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="U"
+            android:text="u"
             android:id="@+id/bu"
             android:layout_row="4"
             android:layout_column="0" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="V"
+            android:text="v"
             android:id="@+id/bv"
             android:layout_row="4"
             android:layout_column="1" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="W"
+            android:text="w"
             android:id="@+id/bw"
             android:layout_row="4"
             android:layout_column="2" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="X"
+            android:text="x"
             android:id="@+id/bx"
             android:layout_row="4"
             android:layout_column="3" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Y"
+            android:text="y"
             android:id="@+id/by"
             android:layout_row="4"
             android:layout_column="4" />
@@ -206,47 +206,38 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Z"
+            android:text="z"
             android:id="@+id/bz"
             android:layout_row="5"
             android:layout_column="0" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Å"
+            android:text="å"
             android:id="@+id/bå"
             android:layout_row="5"
             android:layout_column="1" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Ä"
+            android:text="ä"
             android:id="@+id/bä"
             android:layout_row="5"
             android:layout_column="2" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Ö"
+            android:text="ö"
             android:id="@+id/bö"
             android:layout_row="5"
             android:layout_column="3" />
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="_"
+            android:text=" "
             android:id="@+id/b_"
             android:layout_row="5"
             android:layout_column="4" />
 
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="190dp"
-            android:text="here"
-            android:id="@+id/text"
-            android:layout_row="6"
-            android:layout_column="0"
-            android:layout_columnSpan="5"
-            />
     </GridLayout>
 </RelativeLayout>
